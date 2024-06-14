@@ -1,6 +1,6 @@
 package models;
 
-import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.UUID;
 
 /**
@@ -10,15 +10,15 @@ import java.util.UUID;
  */
 public class Dag {
 
-    private ArrayList<Edge> edgeList;
+    private LinkedList<Edge> edgeList;
     private int nodeCount;
-    
+
 
     /**
      * Constructor for a premade set of edges that makes up the dag.
      * @param edges is the provided list of Edges to make the dag;
      */
-    public Dag(ArrayList<Edge> edges) {
+    public Dag(LinkedList<Edge> edges) {
         for(Edge e : edges) {
             edgeList.add(e);
         }
@@ -37,8 +37,8 @@ public class Dag {
      * @param edgeList2 the dag to be checked
      * @return the number of unique nodes in that DAG.
      */
-    private int computeNodeCount(ArrayList<Edge> edgeList) {
-        ArrayList<UUID> countlist = new ArrayList<>();
+    private int computeNodeCount(LinkedList<Edge> edgeList) {
+        LinkedList<UUID> countlist = new LinkedList<>();
         for(Edge e: edgeList) {
             if(countlist.contains(e.getOriginator().getID())) {
                 //Do nothing
@@ -53,6 +53,16 @@ public class Dag {
         }
         return countlist.size();
         
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        for(Edge e: edgeList) {
+            sb.append("Edge - Vertex A: " + e.getOriginator().toString());
+            sb.append("   Vertex B: " + e.getReciever().toString() + "/n");
+        }
+        return sb.toString();
     }
     
 }
