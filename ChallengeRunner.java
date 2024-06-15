@@ -22,23 +22,27 @@ public class ChallengeRunner {
 
         d1 = DagFunctions.createADag(size);
         System.out.println(d1);
+        System.out.println("Topologically sorting dag...");
+        DagFunctions.topologicalSort(d1);
 
-        System.out.println("Enter the UUID of the vertex you want to find");
-        input = scanner.nextLine();
-        Vertex v;
-        try {
-            v = DagFunctions.findVertex(d1, input);
-            System.out.println("Found the Vertex with ID: " + v.toString());
-            try {
-                System.out.println("Vertex Parent id: " + v.getParent().getID());
-            } catch (Exception e) {
-                System.out.println("Vertex is parent of dag");
-            }
-            System.out.println("Number of direct Children: " + getNumberOfChildren(v));
-        } catch (Exception e) {
-            e.printStackTrace();
-            System.out.println("No Vertex with that uuid, please try again.");
-        }
+
+
+        // System.out.println("Enter the UUID of the vertex you want to find");
+        // input = scanner.nextLine();
+        // Vertex v;
+        // try {
+        //     v = DagFunctions.findVertex(d1, input);
+        //     System.out.println("Found the Vertex with ID: " + v.toString());
+        //     try {
+        //         System.out.println("Vertex Parent id: " + v.getParent().getID());
+        //     } catch (Exception e) {
+        //         System.out.println("Vertex is parent of dag");
+        //     }
+        //     System.out.println("Number of direct Children: " + getNumberOfChildren(v));
+        // } catch (Exception e) {
+        //     e.printStackTrace();
+        //     System.out.println("No Vertex with that uuid, please try again.");
+        // }
     }
 
     /**

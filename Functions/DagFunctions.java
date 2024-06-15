@@ -57,41 +57,48 @@ public class DagFunctions {
      * @param dag the dag to be sorted
      * @return the
      */
-    public Stack<Long> topologicalSort(Dag dag) {
-        List<Edge> edges = dag.getEdgeList();
-        // List<Long> vertexesIds = new ArrayList<>();
-        // for(Edge e: edges) {
-        //     if(!vertexesIds.contains(e.getOriginator().getID())) {
-        //         vertexesIds.add(e.getOriginator().getID());
-        //     }
-        //     if(!vertexesIds.contains(e.getReciever().getID())) {
-        //         vertexesIds.add(e.getReciever().getID());
-        //     }
+    public static Stack<Long> topologicalSort(Dag dag) {
+        List<List<Edge>> adjList = adjacencyUtil(dag.getEdgeList());
+        
+        System.out.println(adjList.size());
+        for(List<Edge> adj : adjList) {
+            System.out.println("Adjacencies for node: " + adj.get(0).getOriginator().getID());
+            for(Edge x : adj) {
+                System.out.println(x.getReciever().getID());
+            }
+        }
+        
+        
+        
+        Stack<Long> list = new Stack<Long>();
+        // List<Long> visited = new ArrayList<Long>();
+        // int size=  dag.getNodeCount();
+        // while(visited.size() != size) {
+            
         // }
 
-        Stack<Long> adjList = new Stack<Long>();
-        List<Long> visited = new ArrayList<Long>();
-        int size=  dag.getNodeCount();
-        while(visited.size() != size) {
-            
-        }
-
-        return adjList;
+        return list;
     }
 
-    public List<List<Edge>> adjacencyUtil(List<Edge> edges) {
+    public static List<List<Edge>> adjacencyUtil(List<Edge> edges) {
         List<List<Edge>> adjList = new ArrayList<>();
-        List<Edge> adjacencies = new ArrayList<>();
+        List<Long> visited = new ArrayList<>();
+
         for(Edge e: edges) {
+            List<Edge> adjacencies = new ArrayList<>();
             long a = e.getOriginator().getID();
-            for(Edge e2: edges) {
-                adjacencies = new ArrayList<>();
-                if(e2.getOriginator().getID() == a) {
-                    adjacencies.add(e2);
+            System.out.println("Originator ID: " + a);
+            if(!visited.contains(a)) {
+                for(Edge e2: edges) {
+                    if(e2.getOriginator().getID() == a) {
+                        adjacencies.add(e2);
+                    }
                 }
+                visited.add(a);
+                adjList.add(adjacencies);
+            } else {
+                System.out.println("Node already processes, moving on.");
             }
-            adjList.add(adjacencies);
-            adjacencies.clear();
         }
         return adjList;
     }
