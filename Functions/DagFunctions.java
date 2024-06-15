@@ -16,13 +16,29 @@ public class DagFunctions {
         return 0;
     }
 
-
-    public Vertex findVertex(Dag dag, String s) throws Exception {
+    /**
+     * Finds and returns a vertex within a Dag. String s must be of sufficient length (at least 7 recommended) that the
+     * vertex found will be the unique one you look for.
+     * @param dag The dag which is being searched.
+     * @param s String which matches the UUID in the Dag.
+     * @return A vertex which has a UUId which matches the UUID.
+     * @throws Exception
+     */
+    public static Vertex findVertex(Dag dag, String s) throws Exception {
+        System.out.println("Search String:" + s);
         Vertex ret = null;
         for(Edge e: dag.getEdgeList()) {
             //Checking if substring s (the id) is included in the Dag.
-            if(e.getOriginator().getID().toString().substring(0, s.length()-1).contains(s)) {
+            System.out.println("Checking Against Originator:" + e.getOriginator().getID().toString().substring(0, s.length()));
+            System.out.println("Checking Against Reciever:" + e.getReciever().getID().toString().substring(0, s.length()));
+            if(e.getOriginator().getID().toString().substring(0, s.length()).equals(s)) {
                 ret = e.getOriginator();
+                break;
+            } else if(e.getReciever().getID().toString().substring(0, s.length()).equals(s)) {
+                ret = e.getReciever();
+                break;
+            } else{
+
             }
         }
         if(ret != null) {
