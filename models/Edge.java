@@ -23,6 +23,14 @@ public class Edge {
     }
 
     /**
+     * Returns a unique ID for an edge.
+     * @return
+     */
+    public UUID getEdgeID() {
+        return edgeID;
+    }
+
+    /**
      * Get method for originating Vertex
      * @return the vertex which is the originating "Node" in the edge.
      */

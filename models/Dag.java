@@ -52,7 +52,7 @@ public class Dag {
      * @return the number of unique nodes in that DAG.
      */
     private int computeNodeCount(ArrayList<Edge> edgeList) {
-        ArrayList<UUID> countlist = new ArrayList<>();
+        ArrayList<Long> countlist = new ArrayList<>();
         for(Edge e: edgeList) {
             if(countlist.contains(e.getOriginator().getID())) {
                 //Do nothing
@@ -73,7 +73,7 @@ public class Dag {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         for(Edge e: edgeList) {
-            sb.append("Edge - Vertex A: " + e.getOriginator().toString());
+            sb.append("EdgeID: " + e.getEdgeID().toString().substring(0,7)+" - Vertex A: " + e.getOriginator().toString());
             sb.append("   Vertex B: " + e.getReciever().toString() + "\n");
         }
         return sb.toString();

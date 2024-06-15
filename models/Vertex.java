@@ -9,23 +9,24 @@ import java.util.UUID;
  */
 public class Vertex {
 
-    private UUID vertexID;
+    private long vertexID;
     private Vertex parent;
 
 
     /**
-     * Constructor of a "parent" Vertex;
+     * Constructor of a DAG "parent" Vertex;
      */
     public Vertex() {
         this.parent = null;
-        UUID uuid = UUID.randomUUID();
-        this.vertexID = uuid;
+        this.vertexID = 0;
     }
 
-    public Vertex(Vertex parent) {
+    /*
+     * constuctor for child Vertex
+     */
+    public Vertex(long id, Vertex parent) {
         this.parent = parent;
-        UUID uuid = UUID.randomUUID();
-        this.vertexID = uuid;
+        this.vertexID = id;
     }
 
     /**
@@ -39,13 +40,13 @@ public class Vertex {
     /*
      * get's the unique id of the vertex
      */
-    public UUID getID() {
+    public long getID() {
         return vertexID;
     }
 
     @Override
     public String toString(){
-        return this.getID().toString().substring(0, 8);
+        return String.valueOf(this.vertexID);
     }
 
 }
