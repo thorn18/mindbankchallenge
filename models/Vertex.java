@@ -45,7 +45,7 @@ public class Vertex {
 
     @Override
     public String toString(){
-        return this.getID().toString();
+        return this.getID().toString().substring(0, 8);
     }
 
 }
