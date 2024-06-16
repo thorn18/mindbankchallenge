@@ -29,6 +29,14 @@ public class Vertex {
         this.vertexID = id;
     }
 
+      /*
+     * constuctor for child Vertex
+     */
+    public Vertex(long id) {
+        this.parent = null;
+        this.vertexID = id;
+    }
+
     /**
      * 
      * @return the parent of Vertex ("if it is not an originator vertex")
