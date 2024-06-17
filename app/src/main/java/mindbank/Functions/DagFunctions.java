@@ -1,4 +1,8 @@
-package mindbank.Functions;
+package Functions;
+
+import mindbank.models.Dag;
+import mindbank.models.Edge;
+import mindbank.models.Vertex;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -6,22 +10,69 @@ import java.util.List;
 import java.util.Random;
 import java.util.Stack;
 
-import mindbank.models.Dag;
-import mindbank.models.Edge;
-import mindbank.models.Vertex;
-
 public class DagFunctions {
 
-    public int findLongestPath(Dag theDag) {
-        // TODO
-        return 0;
+    public static int findLongestPath(Dag theDag, List<List<Edge>> adjList, Stack<Long> topologcialOrder, long selectedVertex) {
+
+        ArrayList<Integer> distances = new ArrayList<Integer>();
+        //Initializing all distances to -Inf
+        for(int x = 0; x < theDag.getNodeCount(); x++) {
+            distances.add(Integer.MIN_VALUE);
+        }
+        distances.set(Integer.valueOf((int)selectedVertex), Integer.valueOf(0));
+
+        System.out.println("Initialized Distance Minimum: ");
+        System.out.println(distances.toString());
+
+
+        while(!topologcialOrder.isEmpty()) {
+            long vertex = topologcialOrder.pop();
+
+            /**
+             * checking if you have reached the vertex yet you are checking for.
+             */
+            if(distances.get((int) vertex) != Integer.MIN_VALUE) {
+
+                for(int y= 0; y < adjList.size()- 1; y++) {
+                    //Checking if vertex has children
+                    if(adjList.get(y).get(0).getOriginator().getID() == vertex) {
+                        List<Edge> inner = adjList.get(y);
+                        for(Edge e: inner) {
+                            //Assigning Vertex V to the child.
+                            Vertex v = e.getReciever();
+                            int id = (int)v.getID();
+                            if(distances.get(id) < distances.get((int)vertex)) {
+                                distances.set(id, distances.get((int)vertex) + 1);
+                            }
+                        }
+                    }
+
+                }
+
+            }
+
+        }
+
+        System.out.println("\n\nFinal Distance Array: ");
+        int largestpath = 0;
+        for(int l : distances) {
+            largestpath = Math.max(largestpath, l);
+            if(l == Integer.MIN_VALUE) {
+                System.out.print("Not Reachable, ");
+            } else {
+                System.out.print(l + ", ");
+            }
+        }
+        System.out.println("\n\nLongest Path is distance: " +largestpath);
+
+        return largestpath;
     }
 
     /**
      * Finds and returns a vertex within a Dag. String s must be of sufficient
      * length (at least 7 recommended) that the
      * vertex found will be the unique one you look for.
-     * 
+     *
      * @param dag The dag which is being searched.
      * @param s   String which matches the UUID in the Dag.
      * @return A vertex which has a UUId which matches the UUID.
@@ -55,7 +106,7 @@ public class DagFunctions {
      * Method which will Topologically sort our dag, returning an adjacency list
      * which we can use
      * for the longest path problem.
-     * 
+     *
      * @param dag the dag to be sorted
      * @return the
      */
@@ -90,7 +141,7 @@ public class DagFunctions {
      * @return the sorted stack in topological order, containing the IDs of the Vertex
      */
     private static Stack<Long> topologicalUtil(ArrayList<Edge> edgeList, List<Edge> adjList, List<Long> visited,
-    Stack<Long> sorted) {
+                                               Stack<Long> sorted) {
         System.out.println("\n\n\n");
         System.out.println("Top of UTIL");
         System.out.println("Visited Array: " + visited);
@@ -157,7 +208,7 @@ public class DagFunctions {
 
     /**
      * Helper method which checks if a vertex has children;
-     * 
+     *
      * @param arrayList of edges in Dag.
      * @param l         the id of the vertex
      * @return whether or not it has children.
@@ -173,6 +224,11 @@ public class DagFunctions {
         return ret;
     }
 
+    /**
+     * Method which creates an adjacency list for each Vertex, where each index in the resulting List is List of Edges for that vertex.
+     * @param edges The list of edges for the DAG
+     * @return The adjacency List
+     */
     public static List<List<Edge>> adjacencyUtil(List<Edge> edges) {
         List<List<Edge>> adjList = new ArrayList<>();
         List<Long> visited = new ArrayList<>();
@@ -198,7 +254,7 @@ public class DagFunctions {
      * Method that creates a random dag of a certain size; The dag will be simple,
      * and while a node using this
      * method may have two children, it will never have two parents.
-     * 
+     *
      * @param size the number of Vertex in a DAG
      * @return the Dag of size x;
      */

@@ -1,10 +1,13 @@
 package mindbank;
 
+import mindbank.models.Dag;
+import mindbank.models.Edge;
+import mindbank.models.Vertex;
+
+
+import java.util.List;
 import java.util.Scanner;
 import java.util.Stack;
-
-import mindbank.Functions.DagFunctions;
-import mindbank.models.Dag;
 
 
 public class RandomDagChallenge {
@@ -24,12 +27,19 @@ public class RandomDagChallenge {
         }
         int size = Integer.parseInt(input);
 
-        d1 = DagFunctions.createADag(size);
+        d1 = Functions.DagFunctions.createADag(size);
         System.out.println(d1);
         System.out.println("Topologically sorting dag...");
-        Stack<Long> sorted = DagFunctions.topologicalSort(d1);
+        Stack<Long> sorted = Functions.DagFunctions.topologicalSort(d1);
         System.out.println(sorted);
         scanner.close();
+
+        System.out.println("\nLongest Path");
+        List<List<Edge>> adjList = Functions.DagFunctions.adjacencyUtil(d1.getEdgeList());
+
+
+        //Change last paramanter to whichever vertex you would like to start from.
+        Functions.DagFunctions.findLongestPath(d1,adjList, sorted, 1);
 
     }
 
