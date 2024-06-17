@@ -1,4 +1,4 @@
-package Functions;
+package mindbank.Functions;
 
 import mindbank.models.Dag;
 import mindbank.models.Edge;

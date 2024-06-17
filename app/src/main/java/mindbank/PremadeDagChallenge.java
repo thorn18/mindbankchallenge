@@ -1,5 +1,6 @@
 package mindbank;
 
+import mindbank.Functions.DagFunctions;
 import mindbank.models.Dag;
 import mindbank.models.Edge;
 import mindbank.models.Vertex;
@@ -41,13 +42,13 @@ public class PremadeDagChallenge {
 
         System.out.println(d1);
         System.out.println("Topologically sorting dag...");
-        Stack<Long> sorted = Functions.DagFunctions.topologicalSort(d1);
-        List<List<Edge>> adjList = Functions.DagFunctions.adjacencyUtil(d1.getEdgeList());
+        Stack<Long> sorted = DagFunctions.topologicalSort(d1);
+        List<List<Edge>> adjList = DagFunctions.adjacencyUtil(d1.getEdgeList());
         System.out.println("Sorted Stack using topological sort");
         System.out.println(sorted);
 
         // Change last paramanter to whichever vertex you would like to start from.
-        Functions.DagFunctions.findLongestPath(d1, adjList, sorted, 1);
+        DagFunctions.findLongestPath(d1, adjList, sorted, 1);
 
     }
 
