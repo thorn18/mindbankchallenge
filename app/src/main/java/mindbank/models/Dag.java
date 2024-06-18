@@ -3,14 +3,14 @@ package mindbank.models;
 import java.util.ArrayList;
 
 /**
- * @feild parentNode is the "Parent" node, or the top of a DAG from which all edges originate.
+ * @field parentNode is the "Parent" node, or the top of a DAG from which all edges originate.
  * @field edgeList is an ArrayList of edges that makes up the DAG;
  * @field nodeCount is the number of unique Nodes in a DAG;
  */
 public class Dag {
 
-    private ArrayList<Edge> edgeList;
-    private int nodeCount;
+    private final ArrayList<Edge> edgeList;
+    private final int nodeCount;
 
 
     /**
@@ -47,7 +47,7 @@ public class Dag {
 
     /**
      * Computes the number of unique Vertex in a DAG.
-     * @param edgeList2 the dag to be checked
+     * @param edgeList the dag to be checked
      * @return the number of unique nodes in that DAG.
      */
     private int computeNodeCount(ArrayList<Edge> edgeList) {

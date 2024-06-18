@@ -8,9 +8,9 @@ import java.util.UUID;
  */
 public class Edge {
     Vertex v = new Vertex();
-    private Vertex originator;
-    private Vertex reciever;
-    private UUID edgeID;
+    private final Vertex originator;
+    private final Vertex reciever;
+    private final UUID edgeID;
 
     /**
      * Constructor for an edge, recieving two vertex.

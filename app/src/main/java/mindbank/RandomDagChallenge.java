@@ -38,7 +38,7 @@ public class RandomDagChallenge {
 
 
         //Change last paramanter to whichever vertex you would like to start from.
-        DagFunctions.findLongestPath(d1,adjList, sorted, 1);
+        DagFunctions.findLongestPath(d1.getNodeCount(),adjList, sorted, 1);
 
     }
 

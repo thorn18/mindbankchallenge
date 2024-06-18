@@ -9,8 +9,8 @@ import java.util.UUID;
  */
 public class Vertex {
 
-    private long vertexID;
-    private Vertex parent;
+    private final long vertexID;
+    private final Vertex parent;
 
 
     /**

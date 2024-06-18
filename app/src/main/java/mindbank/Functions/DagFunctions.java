@@ -12,11 +12,11 @@ import java.util.Stack;
 
 public class DagFunctions {
 
-    public static int findLongestPath(Dag theDag, List<List<Edge>> adjList, Stack<Long> topologcialOrder, long selectedVertex) {
+    public static int findLongestPath(int nodeCount, List<List<Edge>> adjList, Stack<Long> topologcialOrder, long selectedVertex) {
 
         ArrayList<Integer> distances = new ArrayList<Integer>();
         //Initializing all distances to -Inf
-        for(int x = 0; x < theDag.getNodeCount(); x++) {
+        for(int x = 0; x < nodeCount; x++) {
             distances.add(Integer.MIN_VALUE);
         }
         distances.set(Integer.valueOf((int)selectedVertex), Integer.valueOf(0));
@@ -33,7 +33,7 @@ public class DagFunctions {
              */
             if(distances.get((int) vertex) != Integer.MIN_VALUE) {
 
-                for(int y= 0; y < adjList.size()- 1; y++) {
+                for(int y= 0; y < adjList.size(); y++) {
                     //Checking if vertex has children
                     if(adjList.get(y).get(0).getOriginator().getID() == vertex) {
                         List<Edge> inner = adjList.get(y);
