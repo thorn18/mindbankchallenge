@@ -1,6 +1,7 @@
 # mindbankchallenge
 INSTRUCTIONS:
 1. I have two executables in this file, first is PremadeDagChallenge, the second is RandomDagChallenge. The first uses a premade DAG I created myself, and is small but more comeplex(Meaning multiple nodes with no parents, more than one node can point to the same child). The latter will generate a Random DAG which will be less complex but will follow the rules of a dag and be unique enough to test against.
+2. If using PremadDagChallenge, refer to PremadeDags.PNG to see a visual representation of the DAG being tested. You must also modify the DAGSELECTION variable in this program to select one of the 4 dags to test.
 2. Answers to the Coding challenge you send Via the prompt can be found at the very bottom.
 
 
@@ -28,11 +29,26 @@ The algorithm works thusly:
 
 
 Some challenges I Had and how I solved them.
-1. This is a minor problem I had, but as I like to bounce back and forth between Java and my other languages alot, I sometimes forget all the rules Java has for operating on certain variable types. As per the prompt given, I decided to make the values of the IDs for the Vertex <Long>, but a lot of the operations I had to do required them to be integers. I simply had to cast my variables when necessary as they were both primitive types. Java has a lot of useful library methods for dealing with numberical values which I very much enjoy.
+1. This is a minor problem I had, but as I like to bounce back and forth between Java and my other languages alot, 
+I sometimes forget all the rules Java has for operating on certain variable types. 
+As per the prompt given, I decided to make the values of the IDs for the Vertex <Long>, 
+but a lot of the operations I had to do required them to be integers. 
+I simply had to cast my variables when necessary as they were both primitive types. 
+Java has a lot of useful library methods for dealing with numberical values which I very much enjoy.
 
-2. It took me a few hours to wrap my head around the concept of the Topological Sorting + the Longest Path algorithm. I am a very visual learner, and simply seeing pseudocode isn't always enough for me to visualise what is happening in an algorithm. I used several visual mediums and watch several videos demonstrating the algorithm in a more visual way, which helped me grasp it. You also will notice that I like to leave many print statements inside my code, which I will be leaving in there just so you can see my process. I like to print out the state of variables throughout the algorithm so I can use them as a debugger. That way I can look at the output for each step of the algorithm and see where it was breaking down, making the time it takes to find an issue in the code much faster.
+2. It took me a few hours to wrap my head around the concept of the Topological Sorting + the Longest Path algorithm. 
+I am a very visual learner, and simply seeing pseudocode isn't always enough for me to visualise what is happening in an algorithm. 
+I used several visual mediums and watch several videos demonstrating the algorithm in a more visual way, which helped me grasp it. 
+You also will notice that I like to leave many print statements inside my code, which I will be leaving in there just so you can see my process. 
+I like to print out the state of variables throughout the algorithm so I can use them as a debugger. That way I can look at the output for each step of the algorithm and see where it was breaking down, 
+making the time it takes to find an issue in the code much faster.
 
-3. The only other problem that I faced that I want to address was the creation of a Dag to begin with, since I wasn't given any codebase to start with. Modeling a DAG is easy enoguh but creating a semi-complex one to test against would be a bit more difficult to do, especially if I was test to make sure the algorithm held up under unusual cases. To this end, I wrote two executing programs. The first (RandomDagChallenge.java), will generate a randomly generated DAG with a length that you will provide it on the command line. This Dag will not be very complex, but it will give you an element of randomness when running the algorithm. The second is (PremageDagChallenge.java), this one has a premade DAG which I constructed myself, and while smaller than the random one, is a bit more complex and has an expected output to test against. If I were to keep experimenting with this program, I'd probablly expand the random class to create more complex Dags to test against.
+3. The only other problem that I faced that I want to address was the creation of a Dag to begin with, 
+since I wasn't given any codebase to start with. 
+Modeling a DAG is easy enough but creating a semi-complex one to test against would be a bit more difficult to do, especially if I was test to make sure the algorithm held up under unusual cases. 
+To this end, I wrote two executing programs. The first (RandomDagChallenge.java), will generate a randomly generated DAG with a length that you will provide it on the command line. 
+This Dag will not be very complex, but it will give you an element of randomness when running the algorithm. 
+The second is (PremageDagChallenge.java), this one has a premade DAG which I constructed myself, and while smaller than the random one, is a bit more complex and has an expected output to test against. If I were to keep experimenting with this program, I'd probablly expand the random class to create more complex Dags to test against.
 
 
 

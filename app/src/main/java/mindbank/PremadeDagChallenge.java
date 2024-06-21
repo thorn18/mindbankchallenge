@@ -15,16 +15,13 @@ import java.util.Stack;
  */
 public class PremadeDagChallenge {
 
-    //EDIT THIS VARIABLE for whichever DAG you wish to run the program on.
-    int dagselection = 1;
-
     static Dag d1;
 
     public static void main(String[] args) {
 
-        /**
-         *EDIT THIS VARIABLE for whichever DAG you wish to run the program on. Valid options are 1, 2 or 3
-         * See PremadeDags.PNG to see options.
+        /*
+         EDIT THIS VARIABLE for whichever DAG you wish to run the program on. Valid options are 1, 2 or 3
+          See PremadeDags.PNG to see options.
          */
         int DAGSELECTION = 0;
 
